@@ -23,7 +23,7 @@
 <p>例如，<code>1 + (-1) = [00000001]反 + [11111110]反 = [11111111]反 = [10000000]原 = -0</code></p>
 <p>然而这又出现了一个新问题，0的在反码中没有唯一性：有<code>[00000000]</code>和<code>[10000000]</code>两个编码分别表示+0和-0。</p>
 <p>所以又引入了补码的概念，例如：<br><code>1 + (-1) = [00000001]原 + [10000001]原 = [00000001]补 + [11111111]补 = [00000000]补 = [00000000]原 = 0</code></p>
-<p>在补码中，0只表示为<code>[00000000]</code>，而多出的<code>[10000000]</code>表示-128。因此在8位字长系统中，补码的取值范围是<code>[-128，127]</code>。在编程中，32位int类型的范围是: <script type="math/tex">[-2^{31}, 2^{31}-1]</script>。</p>
+<p>在补码中，0只表示为<code>[00000000]</code>，而多出的<code>[10000000]</code>表示-128。因此在8位字长系统中，补码的取值范围是<code>[-128，127]</code>。在编程中，32位int类型的范围是<script type="math/tex">[-2^{31}, 2^{31}-1]</script>。</p>
 </div><iframe src="/donate/?AliPayQR=/AliPayQR.png&amp;WeChatQR=/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><div class="tags"><a href="/tags/计算机原理/">计算机原理</a><a href="/tags/二进制/">二进制</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
   clientID: 'fe2b52377a09d7bec471',
   clientSecret: '9b7050da9526fe6d808b06befe55f1e1e48c5075',
