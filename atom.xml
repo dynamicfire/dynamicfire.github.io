@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>aerial&#39;s log</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://aerial.ac.cn/"/>
+  <updated>2018-04-14T08:42:32.657Z</updated>
+  <id>https://aerial.ac.cn/</id>
+  
+  <author>
+    <name>Aerial</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机内数值的表示</title>
+    <link href="https://aerial.ac.cn/2018/04/12/binary/"/>
+    <id>https://aerial.ac.cn/2018/04/12/binary/</id>
+    <published>2018-04-11T16:00:00.000Z</published>
+    <updated>2018-04-14T08:42:32.657Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文简述了计算机的原码、反码和补码的基本概念及它们之间的联系。</p><h2 id="1-机器数及真值"><a href="#1-机器数及真值" class="headerlink" title="1. 机器数及真值"></a>1. 机器数及真值</h2><p>众所周知，在计算机内数值是以二进制形式储存使用的，数字在计算机中的二进制表示形式被称作 <strong>机器数</strong>。机器数有两大特点，一是符号数值化，二是大小受机器字长的限制。机器数是带符号的，在计算机用一个数的最高位存放符号，正数为0，负数为1。数的形式值（机器数）不等于真正的数值，机器数对应的数值称为机器数的真值。 </p><p>假设计算机字长为8位：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">十进制数 +<span class="number">7</span> 转换成二进制就是  <span class="number">00000111</span>（真值）其机器数为 <span class="number">00000111</span></span><br><span class="line">十进制数 <span class="number">-7</span> 转换成二进制就是 <span class="number">-00000111</span>（真值）其机器数为 <span class="number">10000111</span></span><br></pre></td></tr></table></figure></p><h2 id="2-机器数的三种形式"><a href="#2-机器数的三种形式" class="headerlink" title="2. 机器数的三种形式"></a>2. 机器数的三种形式</h2><p>机器数有原码、反码和补码三种表示形式。</p><h3 id="2-1-原码"><a href="#2-1-原码" class="headerlink" title="2.1 原码"></a>2.1 原码</h3><p>原码是人脑最容易理解和计算的编码方式（对于计算机并不是），是符号位加上真值的绝对值，即第一位为符号位，其余位表示值。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">十进制数+<span class="number">1</span>原码为 <span class="number">00000001</span></span><br><span class="line">十进制数<span class="number">-1</span>原码为 <span class="number">10000001</span></span><br></pre></td></tr></table></figure></p><p>因为第一位是符号位，所以8位二进制的取值范围为：<br><code>[11111111,01111111]</code>即<code>[-127,127]</code>。</p><p>无符号数（正数）用原码。</p><p>原码对于对于计算机来说并不好处理：</p><p><script type="math/tex">(+1)_{10}</script>和<script type="math/tex">(-1)_{10}</script>相加为0，但计算机只能算出<script type="math/tex">(0001)_{2}</script>+<script type="math/tex">(1001)_{2}</script>=<script type="math/tex">(1010)_{2}</script>=<script type="math/tex">(-2)_{10}</script>。</p><p>因此人们在原码的基础上引入了反码和补码。</p><h3 id="2-2-反码"><a href="#2-2-反码" class="headerlink" title="2.2 反码"></a>2.2 反码</h3><p>正数的反码与原码相同，负数的反码是符号位不变，数值位逐位取反。<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[+1]</span> = <span class="string">[00000001]</span>原 = <span class="string">[00000001]</span>反</span><br><span class="line"><span class="string">[-1]</span> = <span class="string">[10000001]</span>原 = <span class="string">[11111110]</span>反</span><br></pre></td></tr></table></figure></p><p>值得注意的是，0的反码有两个，<code>[+0]=[00000000]反</code>和<code>[-0]=[11111111]反</code>。</p><h3 id="2-3-补码"><a href="#2-3-补码" class="headerlink" title="2.3 补码"></a>2.3 补码</h3><p>正数的补码与原码相同，负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1(即在反码的基础上+1)。<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[+1]</span> = <span class="string">[00000001]</span>原 = <span class="string">[00000001]</span>反 = <span class="string">[00000001]</span>补</span><br><span class="line"><span class="string">[-1]</span> = <span class="string">[10000001]</span>原 = <span class="string">[11111110]</span>反 = <span class="string">[11111111]</span>补</span><br></pre></td></tr></table></figure></p><p>0的补码只有一种形式。</p><h2 id="3-为何要用补码？"><a href="#3-为何要用补码？" class="headerlink" title="3. 为何要用补码？"></a>3. 为何要用补码？</h2><p>由上可知计算在涉及负数时，若机器码采用原码来计算，其结果显然是错误的。未完待续…</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本文简述了计算机的原码、反码和补码的基本概念及它们之间的联系。&lt;/p&gt;
+&lt;h2 id=&quot;1-机器数及真值&quot;&gt;&lt;a href=&quot;#1-机器数及真值&quot; class=&quot;headerlink&quot; title=&quot;1. 机器数及真值&quot;&gt;&lt;/a&gt;1. 机器数及真值&lt;/h2&gt;&lt;p&gt;众所周知，
+      
+    
+    </summary>
+    
+      <category term="计算机基础" scheme="https://aerial.ac.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="计算机原理" scheme="https://aerial.ac.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="二进制" scheme="https://aerial.ac.cn/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+  </entry>
+  
+</feed>
