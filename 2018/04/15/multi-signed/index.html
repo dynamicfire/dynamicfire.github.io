@@ -15,6 +15,18 @@
 <p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：</p>
 <p>乘积 <script type="math/tex">p = |x| \times |y|</script><br>符号 <script type="math/tex">p_{s} = |x|_{s} \oplus |y|_{s}</script></p>
 <p>举例说明，设 <code>x = 0.1101</code>，<code>y = 0.1011</code>,用手算求乘积，其过程如下：<br><img src="http://resource.dynamicfire.cn/blog/multi-signed-1.png" alt=""></p>
+<p>这种算法过于消耗计算机资源，下面说明在计算机中的计算过程：</p>
+<ol>
+<li>将部分积设为0，并把长度扩展到和x相同，即<code>00.0000</code></li>
+<li>因y的最后一位是1，所以要加上x的绝对值：<code>00.0000 + 00.1101 = 00.1101</code></li>
+<li>将部分积右移1位，前面补0，即<code>00.01101</code></li>
+<li>因y的倒数第二位是1，加x的绝对值：<code>00.01101 + 00.1101 = 01.00111</code></li>
+<li>把<code>01.00111</code>右移1位，前面补0，即<code>00.100111</code></li>
+<li>y倒数第3位是0，只要加0，所以还是：<code>00.100111</code></li>
+<li><code>00.100111</code>右移一位，即<code>00.0100111</code></li>
+<li>y第一位是1，加上x的绝对值：<code>00.0100111 + 00.1101 = 01.0001111</code></li>
+<li><code>01.0001111</code>右移一位，即<code>00.10001111</code><br>所以最后结果为<code>0.10001111</code>。</li>
+</ol>
 </div><iframe src="/donate/?AliPayQR=/AliPayQR.png&amp;WeChatQR=/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><div class="tags"><a href="/tags/计算机原理/">计算机原理</a><a href="/tags/二进制/">二进制</a></div><div class="post-nav"><a class="next" href="/2018/04/12/binary/">计算机内数值的表示</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
   clientID: 'fe2b52377a09d7bec471',
   clientSecret: '9b7050da9526fe6d808b06befe55f1e1e48c5075',
