@@ -3,10 +3,10 @@
   
     
     <entry>
-      <title>原码一位乘法</title>
-      <link href="/2018/04/15/multi%20signed/"/>
-      <url>/2018/04/15/multi%20signed/</url>
-      <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的<em><a href="/2018/04/12/binary/">计算机内数值的表示</a></em>一文中我简单介绍了三种方法来表示有符号数：原码（sign-and-magnitude）、反码（ones’ complement）和补码（two’s complement）。另外还有移码（excess-N）的表示方法。</p><p>在定点计算机系统中，两个原码相乘<script type="math/tex">x\times y = z</script>的运算规则如下：</p><ol><li>z的符号位通过x和y的符号位进行异或运算得到；</li><li>z除了符号之外的其他部分由x的绝对值乘以y的绝对值得到。</li></ol><p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：</p><p>乘积 <script type="math/tex">p = |x| \times |y|</script><br>符号 <script type="math/tex">p_{s} = |x|_{s} \oplus |y|_{s}</script></p><p>举例说明，设 <code>x = 0.1101</code>，<code>y = 0.1011</code>,用手算求乘积，其过程如下：<br><img src="http://resource.dynamicfire.cn/blog/multi-signed-1.png" alt=""></p><p>这种算法过于消耗计算机资源，下面说明在计算机中的计算过程：</p><ol><li>将部分积设为0，并把长度扩展到和x相同，即<code>00.0000</code></li><li>因y的最后一位是1，所以要加上x的绝对值：<code>00.0000 + 00.1101 = 00.1101</code></li><li>将部分积右移1位，前面补0，即<code>00.01101</code></li><li>因y的倒数第二位是1，加x的绝对值：<code>00.01101 + 00.1101 = 01.00111</code></li><li>把<code>01.00111</code>右移1位，前面补0，即<code>00.100111</code></li><li>y倒数第3位是0，只要加0，所以还是：<code>00.100111</code></li><li><code>00.100111</code>右移一位，即<code>00.0100111</code></li><li>y第一位是1，加上x的绝对值：<code>00.0100111 + 00.1101 = 01.0001111</code></li><li><code>01.0001111</code>右移一位，即<code>00.10001111</code><br>所以最后结果为<code>0.10001111</code>。</li></ol>]]></content>
+      <title>补码一位乘法</title>
+      <link href="/2018/04/15/booth&#39;s%20multiplication/"/>
+      <url>/2018/04/15/booth&#39;s%20multiplication/</url>
+      <content type="html"><![CDATA[<p><em>本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>在原码乘法中，符号位不能参加运算，需要用单独的一个异或门产生乘积的符号位。这样一来电路就变得更加复杂。因此，将补码引入乘法计算可以让电路简化并降低成本。Booth算法（Booth’s multiplication algorithm）是计算机中一种利用补码来计算乘法的算法。通过该算法可以实现符号位直接参加运算。</p><p>在定点计算机系统中，两个补码相乘（Booth算法）<script type="math/tex">x\times y = z</script>的运算规则如下：</p><p>未完待续…</p>]]></content>
       
       <categories>
           
@@ -26,10 +26,10 @@
     </entry>
     
     <entry>
-      <title>补码一位乘法</title>
-      <link href="/2018/04/15/booth&#39;s%20multiplication/"/>
-      <url>/2018/04/15/booth&#39;s%20multiplication/</url>
-      <content type="html"><![CDATA[<p><em>本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>未完待续…</p>]]></content>
+      <title>原码一位乘法</title>
+      <link href="/2018/04/15/multi%20signed/"/>
+      <url>/2018/04/15/multi%20signed/</url>
+      <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的<em><a href="/2018/04/12/binary/">计算机内数值的表示</a></em>一文中我简单介绍了三种方法来表示有符号数：原码（sign-and-magnitude）、反码（ones’ complement）和补码（two’s complement）。另外还有移码（excess-N）的表示方法。</p><p>在定点计算机系统中，两个原码相乘<script type="math/tex">x\times y = z</script>的运算规则如下：</p><ol><li>z的符号位通过x和y的符号位进行异或运算得到；</li><li>z除了符号之外的其他部分由x的绝对值乘以y的绝对值得到。</li></ol><p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：</p><p>乘积 <script type="math/tex">p = |x| \times |y|</script><br>符号 <script type="math/tex">p_{s} = |x|_{s} \oplus |y|_{s}</script></p><p>举例说明，设 <code>x = 0.1101</code>，<code>y = 0.1011</code>,用手算求乘积，其过程如下：<br><img src="http://resource.dynamicfire.cn/blog/multi-signed-1.png" alt=""></p><p>这种算法过于消耗计算机资源，下面说明在计算机中的计算过程：</p><ol><li>将部分积设为0，并把长度扩展到和x相同，即<code>00.0000</code></li><li>因y的最后一位是1，所以要加上x的绝对值：<code>00.0000 + 00.1101 = 00.1101</code></li><li>将部分积右移1位，前面补0，即<code>00.01101</code></li><li>因y的倒数第二位是1，加x的绝对值：<code>00.01101 + 00.1101 = 01.00111</code></li><li>把<code>01.00111</code>右移1位，前面补0，即<code>00.100111</code></li><li>y倒数第3位是0，只要加0，所以还是：<code>00.100111</code></li><li><code>00.100111</code>右移一位，即<code>00.0100111</code></li><li>y第一位是1，加上x的绝对值：<code>00.0100111 + 00.1101 = 01.0001111</code></li><li><code>01.0001111</code>右移一位，即<code>00.10001111</code><br>所以最后结果为<code>0.10001111</code>。</li></ol>]]></content>
       
       <categories>
           

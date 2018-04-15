@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aerial.ac.cn/"/>
-  <updated>2018-04-15T11:03:27.362Z</updated>
+  <updated>2018-04-15T11:32:09.210Z</updated>
   <id>https://aerial.ac.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>补码一位乘法</title>
+    <link href="https://aerial.ac.cn/2018/04/15/booth&#39;s%20multiplication/"/>
+    <id>https://aerial.ac.cn/2018/04/15/booth&#39;s multiplication/</id>
+    <published>2018-04-14T16:00:00.000Z</published>
+    <updated>2018-04-15T11:32:09.210Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>在原码乘法中，符号位不能参加运算，需要用单独的一个异或门产生乘积的符号位。这样一来电路就变得更加复杂。因此，将补码引入乘法计算可以让电路简化并降低成本。Booth算法（Booth’s multiplication algorithm）是计算机中一种利用补码来计算乘法的算法。通过该算法可以实现符号位直接参加运算。</p><p>在定点计算机系统中，两个补码相乘（Booth算法）<script type="math/tex">x\times y = z</script>的运算规则如下：</p><p>未完待续…</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;em&gt;本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;在原码乘法中，符号位不能参加运算，需要用单独的一个异或门产生乘积的符号位。这样一来电路就变得更加复杂。因此，将补码引入乘法计算可以让电路简化并降低成本。Booth算法（Boot
+      
+    
+    </summary>
+    
+      <category term="计算机基础" scheme="https://aerial.ac.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="计算机原理" scheme="https://aerial.ac.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="二进制" scheme="https://aerial.ac.cn/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>原码一位乘法</title>
@@ -31,35 +59,6 @@
       
         &lt;p&gt;&lt;em&gt;本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的&lt;em&gt;&lt;a href=&quot;/2018/04/12
-      
-    
-    </summary>
-    
-      <category term="计算机基础" scheme="https://aerial.ac.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="计算机原理" scheme="https://aerial.ac.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="二进制" scheme="https://aerial.ac.cn/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>补码一位乘法</title>
-    <link href="https://aerial.ac.cn/2018/04/15/booth&#39;s%20multiplication/"/>
-    <id>https://aerial.ac.cn/2018/04/15/booth&#39;s multiplication/</id>
-    <published>2018-04-14T16:00:00.000Z</published>
-    <updated>2018-04-15T10:39:05.331Z</updated>
-    
-    <content type="html"><![CDATA[<p><em>本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>未完待续…</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;em&gt;本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;未完待续…&lt;/p&gt;
-
       
     
     </summary>
