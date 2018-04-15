@@ -12,7 +12,8 @@
 <li>z的符号位通过x和y的符号位进行异或运算得到；</li>
 <li>z除了符号之外的其他部分由x的绝对值乘以y的绝对值得到。</li>
 </ol>
-<p>被乘数和乘数均取绝对值参加运算，符号位单独考虑。</p>
+<p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：<br><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">乘积 <span class="string">$$</span>p = |x| \times |y|<span class="string">$$</span></span><br><span class="line">符号 <span class="string">$$</span>p_&#123;s&#125; = |x|_&#123;s&#125; \oplus |y|_&#123;s&#125;<span class="string">$$</span></span><br></pre></td></tr></table></figure></p>
+<p>原码一位乘法</p>
 </div><iframe src="/donate/?AliPayQR=/AliPayQR.png&amp;WeChatQR=/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><div class="tags"><a href="/tags/计算机原理/">计算机原理</a><a href="/tags/二进制/">二进制</a></div><div class="post-nav"><a class="next" href="/2018/04/12/binary/">计算机内数值的表示</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
   clientID: 'fe2b52377a09d7bec471',
   clientSecret: '9b7050da9526fe6d808b06befe55f1e1e48c5075',
