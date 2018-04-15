@@ -13,7 +13,47 @@ ga('create','UA-117553820-1','auto');ga('send','pageview');
   </script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">补码一位乘法</h1><a id="logo" href="/.">aerial's log</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">补码一位乘法</h1><div class="post-meta">Apr 15, 2018<span> | </span><span class="category"><a href="/categories/计算机基础/">计算机基础</a></span></div><div class="post-content"><p><em>本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。</em></p>
 <p>在原码乘法中，符号位不能参加运算，需要用单独的一个异或门产生乘积的符号位。这样一来电路就变得更加复杂。因此，将补码引入乘法计算可以让电路简化并降低成本。Booth算法（Booth’s multiplication algorithm）是计算机中一种利用补码来计算乘法的算法。通过该算法可以实现符号位直接参加运算。</p>
 <p>在定点计算机系统中，两个补码相乘（Booth算法）<script type="math/tex">x\times y = z</script>的运算规则如下：</p>
-<p>未完待续…</p>
+<ol>
+<li>x取双符号，部分积设为0，y取单符号位。</li>
+<li>y最低位先增加一个附加位0，之后每次讨论的y最后两位是判断位。部分积每次右移一位。</li>
+<li>判断y的最后两位的时候，遵循这样的规则：</li>
+</ol>
+<ul>
+<li>为<code>00</code>或<code>11</code>时，直接右移一位；</li>
+<li>为<code>01</code>时，加<code>[x]补</code>，然后右移一位；</li>
+<li>为<code>10</code>时，加<code>[-x]补</code>，然后右移一位；</li>
+<li>最后一步运算不用右移。</li>
+</ul>
+<p>举例说明，设 <code>x = -0.1101</code>，<code>y = 0.1011</code>,用Booth算法求乘积，其过程如下：</p>
+<ol>
+<li><p>写出x、-x的补码：</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[x]</span>补 = <span class="number">11</span>.<span class="number">0011</span></span><br><span class="line"><span class="string">[-x]</span>补 = <span class="number">00</span>.<span class="number">1101</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设部分积的初值为<code>00.0000</code></p>
+</li>
+<li>在y最低位增加一个附加位0，此时<code>y = 0.10110</code></li>
+<li><p><code>0.10110</code>当前最后两位判断位是<code>10</code>，所以加上<code>[-x]补</code>：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00.0000</span> + <span class="number">00.1101</span> = <span class="number">00.1101</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>00.1101</code>右移一位变成<code>00.01101</code></p>
+</li>
+<li>此时，判断位往前挪了一个位置<code>y = 0.10110</code>的判断位为<code>11</code>，直接右移一位，部分积就变成了<code>00.001101</code></li>
+<li><p><code>y = 0.10110</code>的判断位变成了<code>01</code>，加<code>[x]补</code>：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00.001101</span> + <span class="number">11.0011</span> = <span class="number">11.011001</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>右移一位，变成了<code>11.1011001</code></p>
+</li>
+<li><p>此时<code>y = 0.10110</code>的判断位变成了<code>10</code>，加上<code>[-x]补</code>：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11.1011001</span> + <span class="number">00.1101</span> = <span class="number">00.1000001</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>00.1000001</code>右移一位变成了<code>00.01000001</code></p>
+</li>
+<li><p>此时<code>y = 0.10110</code>的判断位变成了<code>01</code>，加<code>[x]补</code>：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00.01000001</span> + <span class="number">11.0011</span> = <span class="number">11.01110001</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后一步不用右移，最后结果就是<code>1.01110001</code></p>
+</li>
+</ol>
 </div><iframe src="/donate/?AliPayQR=/AliPayQR.png&amp;WeChatQR=/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><div class="tags"><a href="/tags/计算机原理/">计算机原理</a><a href="/tags/二进制/">二进制</a></div><div class="post-nav"><a class="next" href="/2018/04/15/multi signed/">原码一位乘法</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
   clientID: 'fe2b52377a09d7bec471',
   clientSecret: '9b7050da9526fe6d808b06befe55f1e1e48c5075',
