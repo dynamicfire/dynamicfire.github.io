@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aerial.ac.cn/"/>
-  <updated>2018-04-15T10:33:10.671Z</updated>
+  <updated>2018-04-15T10:39:05.331Z</updated>
   <id>https://aerial.ac.cn/</id>
   
   <author>
@@ -21,15 +21,16 @@
     <link href="https://aerial.ac.cn/2018/04/15/booth&#39;s%20multiplication/"/>
     <id>https://aerial.ac.cn/2018/04/15/booth&#39;s multiplication/</id>
     <published>2018-04-14T16:00:00.000Z</published>
-    <updated>2018-04-15T10:33:10.671Z</updated>
+    <updated>2018-04-15T10:39:05.331Z</updated>
     
-    <content type="html"><![CDATA[<p><em>本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。</em></p>]]></content>
+    <content type="html"><![CDATA[<p><em>本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>未完待续…</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;&lt;em&gt;本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;未完待续…&lt;/p&gt;
 
       
     
