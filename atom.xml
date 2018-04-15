@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aerial.ac.cn/"/>
-  <updated>2018-04-15T08:46:49.080Z</updated>
+  <updated>2018-04-15T08:48:16.475Z</updated>
   <id>https://aerial.ac.cn/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://aerial.ac.cn/2018/04/15/multi-signed/"/>
     <id>https://aerial.ac.cn/2018/04/15/multi-signed/</id>
     <published>2018-04-14T16:00:00.000Z</published>
-    <updated>2018-04-15T08:46:49.080Z</updated>
+    <updated>2018-04-15T08:48:16.475Z</updated>
     
-    <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的<a href="/2018/04/12/binary/">计算机内数值的表示</a>一文中我简单介绍了三种方法来表示有符号数：原码（sign-and-magnitude）、反码（ones’ complement）和补码（two’s complement）。另外还有移码（excess-N）的表示方法。</p><p>在定点计算机系统中，两个原码相乘<script type="math/tex">x\times y = z</script>的运算规则如下：</p><ol><li>z的符号位通过x和y的符号位进行异或运算得到；</li><li>z除了符号之外的其他部分由x的绝对值乘以y的绝对值得到。</li></ol><p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：<br><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">乘积 <span class="string">$$</span>p = |x| \times |y|<span class="string">$$</span></span><br><span class="line">符号 <span class="string">$$</span>p_&#123;s&#125; = |x|_&#123;s&#125; \oplus |y|_&#123;s&#125;<span class="string">$$</span></span><br></pre></td></tr></table></figure></p><p>原码一位乘法</p>]]></content>
+    <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的<a href="/2018/04/12/binary/">计算机内数值的表示</a>一文中我简单介绍了三种方法来表示有符号数：原码（sign-and-magnitude）、反码（ones’ complement）和补码（two’s complement）。另外还有移码（excess-N）的表示方法。</p><p>在定点计算机系统中，两个原码相乘<script type="math/tex">x\times y = z</script>的运算规则如下：</p><ol><li>z的符号位通过x和y的符号位进行异或运算得到；</li><li>z除了符号之外的其他部分由x的绝对值乘以y的绝对值得到。</li></ol><p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：</p><p>乘积 <script type="math/tex">p = |x| \times |y|</script><br>符号 <script type="math/tex">p_{s} = |x|_{s} \oplus |y|_{s}</script></p><p>原码一位乘法</p>]]></content>
     
     <summary type="html">
     
