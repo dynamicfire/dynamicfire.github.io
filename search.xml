@@ -4,8 +4,8 @@
     
     <entry>
       <title>原码一位乘法</title>
-      <link href="/2018/04/15/multiplication-signed-magnitude/"/>
-      <url>/2018/04/15/multiplication-signed-magnitude/</url>
+      <link href="/2018/04/15/multi-signed-magnitude/"/>
+      <url>/2018/04/15/multi-signed-magnitude/</url>
       <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的<a href="/2018/04/12/binary/">计算机内数值的表示</a>一文中我简单介绍了三种方法来表示有符号数：原码（sign-and-magnitude）、反码（ones’ complement）和补码（two’s complement）。另外还有移码（excess-N）的表示方法。</p><p>在定点计算机中，两个原码表示的数相乘的运算规则</p>]]></content>
       
       <categories>
