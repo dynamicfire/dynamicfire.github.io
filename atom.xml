@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aerial.ac.cn/"/>
-  <updated>2018-04-17T13:22:02.859Z</updated>
+  <updated>2018-04-17T13:28:23.075Z</updated>
   <id>https://aerial.ac.cn/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://aerial.ac.cn/2018/division-signed/"/>
     <id>https://aerial.ac.cn/2018/division-signed/</id>
     <published>2018-04-16T16:00:00.000Z</published>
-    <updated>2018-04-17T13:22:02.859Z</updated>
+    <updated>2018-04-17T13:28:23.075Z</updated>
     
-    <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位除法。文中没有涉及到高深的数学知识。</em></p><p>由原码表示的两个数相除时，商的符号由两数的符号<em>按位相加</em>求得，商的数值部分由两数的<em>数值部分相除</em>求得。</p><p>在定点计算机系统中，设有n位定点小数(定点整数也行)，被除数<script type="math/tex">[x]_{原}=x_{f}.x_{1}x_{2}\dots x_{n}</script>，除数<script type="math/tex">[y]_{原}=y_{f}.y_{1}y_{2}\dots y_{n}</script>。</p><p>两个原码相除<script type="math/tex">x\div y = z</script>的运算规则如下：<br>商<script type="math/tex">z=\frac{x}{y}</script>，其原码为<script type="math/tex">[z]_{原}=(x_{f}\oplus y_{f})(\frac{x_{1}x_{2}\dots x_{n}}{y_{1}y_{2}\dots y_{n}})</script>。</p><p>举例说明，设 <code>x = 0.1011</code>，<code>y = 0.1101</code>,模仿十进制除法运算求商，其过程如下：<br><img src="http://resource.dynamicfire.cn/blog/division-signed-1.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位除法。文中没有涉及到高深的数学知识。</em></p><p>由原码表示的两个数相除时，商的符号由两数的符号<em>按位相加</em>求得，商的数值部分由两数的<em>数值部分相除</em>求得。</p><p>在定点计算机系统中，设有n位定点小数(定点整数也行)，被除数<script type="math/tex">[x]_{原}=x_{s}.x_{1}x_{2}\dots x_{n}</script>，除数<script type="math/tex">[y]_{原}=y_{s}.y_{1}y_{2}\dots y_{n}</script>。</p><p>两个原码相除<script type="math/tex">x\div y = z</script>的运算规则如下：<br>商<script type="math/tex">z=\frac{x}{y}</script>，其原码为<script type="math/tex">[z]_{原}=(x_{s}\oplus y_{s})(\frac{x_{1}x_{2}\dots x_{n}}{y_{1}y_{2}\dots y_{n}})</script>。</p><p>举例说明，设 <code>x = 0.1011</code>，<code>y = 0.1101</code>,模仿十进制除法运算求商，其过程如下：<br><img src="http://resource.dynamicfire.cn/blog/division-signed-1.png" alt=""></p><script type="math/tex; mode=display">\because Z_{s}=x_{s}\oplus y_{s}=0\oplus 0=0</script><script type="math/tex; mode=display">\therefore x\div y = 0.1101+\frac{0.0111\times 2^{-4}}{0.1101}</script>]]></content>
     
     <summary type="html">
     
@@ -71,34 +71,6 @@
   </entry>
   
   <entry>
-    <title>原码一位乘法</title>
-    <link href="https://aerial.ac.cn/2018/multi-signed/"/>
-    <id>https://aerial.ac.cn/2018/multi-signed/</id>
-    <published>2018-04-14T16:00:00.000Z</published>
-    <updated>2018-04-16T13:12:17.861Z</updated>
-    
-    <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的<em><a href="/2018/binary/">计算机内数值的表示</a></em>一文中我简单介绍了三种方法来表示有符号数：原码（sign-and-magnitude）、反码（ones’ complement）和补码（two’s complement）。另外还有移码（excess-N）的表示方法。</p><p>在定点计算机系统中，两个原码相乘<script type="math/tex">x\times y = z</script>的运算规则如下：</p><ol><li>z的符号位通过x和y的符号位进行异或运算得到；</li><li>z除了符号之外的其他部分由x的绝对值乘以y的绝对值得到。</li></ol><p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：</p><p>乘积 <script type="math/tex">p = |x| \times |y|</script><br>符号 <script type="math/tex">p_{s} = |x|_{s} \oplus |y|_{s}</script></p><p>举例说明，设 <code>x = 0.1101</code>，<code>y = 0.1011</code>,用手算求乘积，其过程如下：<br><img src="http://resource.dynamicfire.cn/blog/multi-signed-1.png" alt=""></p><p>这种算法过于消耗计算机资源，下面说明在计算机中的计算过程：</p><ol><li>将部分积设为0，并把长度扩展到和x相同，即<code>00.0000</code></li><li>因y的最后一位是1，所以要加上x的绝对值：<code>00.0000 + 00.1101 = 00.1101</code></li><li>将部分积右移1位，前面补0，即<code>00.01101</code></li><li>因y的倒数第二位是1，加x的绝对值：<code>00.01101 + 00.1101 = 01.00111</code></li><li>把<code>01.00111</code>右移1位，前面补0，即<code>00.100111</code></li><li>y倒数第3位是0，只要加0，所以还是：<code>00.100111</code></li><li><code>00.100111</code>右移一位，即<code>00.0100111</code></li><li>y第一位是1，加上x的绝对值：<code>00.0100111 + 00.1101 = 01.0001111</code></li><li><code>01.0001111</code>右移一位，即<code>00.10001111</code><br>所以最后结果为<code>0.10001111</code>。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;em&gt;本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的&lt;em&gt;&lt;a href=&quot;/2018/binar
-      
-    
-    </summary>
-    
-      <category term="计算机基础" scheme="https://aerial.ac.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="计算机原理" scheme="https://aerial.ac.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="二进制" scheme="https://aerial.ac.cn/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
     <title>补码一位乘法</title>
     <link href="https://aerial.ac.cn/2018/booth&#39;s-alg/"/>
     <id>https://aerial.ac.cn/2018/booth&#39;s-alg/</id>
@@ -113,6 +85,34 @@
       
         &lt;p&gt;&lt;em&gt;本文简述了计算机中的补码一位乘法。文中没有涉及到高深的数学知识。&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;在原码乘法中，符号位不能参加运算，需要用单独的一个异或门产生乘积的符号位。这样一来电路就变得更加复杂。因此，将补码引入乘法计算可以让电路简化并降低成本。Booth算法（Boot
+      
+    
+    </summary>
+    
+      <category term="计算机基础" scheme="https://aerial.ac.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="计算机原理" scheme="https://aerial.ac.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="二进制" scheme="https://aerial.ac.cn/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原码一位乘法</title>
+    <link href="https://aerial.ac.cn/2018/multi-signed/"/>
+    <id>https://aerial.ac.cn/2018/multi-signed/</id>
+    <published>2018-04-14T16:00:00.000Z</published>
+    <updated>2018-04-16T13:12:17.861Z</updated>
+    
+    <content type="html"><![CDATA[<p><em>本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。</em></p><p>人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的<em><a href="/2018/binary/">计算机内数值的表示</a></em>一文中我简单介绍了三种方法来表示有符号数：原码（sign-and-magnitude）、反码（ones’ complement）和补码（two’s complement）。另外还有移码（excess-N）的表示方法。</p><p>在定点计算机系统中，两个原码相乘<script type="math/tex">x\times y = z</script>的运算规则如下：</p><ol><li>z的符号位通过x和y的符号位进行异或运算得到；</li><li>z除了符号之外的其他部分由x的绝对值乘以y的绝对值得到。</li></ol><p>即被乘数和乘数均取绝对值参加运算，符号位单独考虑：</p><p>乘积 <script type="math/tex">p = |x| \times |y|</script><br>符号 <script type="math/tex">p_{s} = |x|_{s} \oplus |y|_{s}</script></p><p>举例说明，设 <code>x = 0.1101</code>，<code>y = 0.1011</code>,用手算求乘积，其过程如下：<br><img src="http://resource.dynamicfire.cn/blog/multi-signed-1.png" alt=""></p><p>这种算法过于消耗计算机资源，下面说明在计算机中的计算过程：</p><ol><li>将部分积设为0，并把长度扩展到和x相同，即<code>00.0000</code></li><li>因y的最后一位是1，所以要加上x的绝对值：<code>00.0000 + 00.1101 = 00.1101</code></li><li>将部分积右移1位，前面补0，即<code>00.01101</code></li><li>因y的倒数第二位是1，加x的绝对值：<code>00.01101 + 00.1101 = 01.00111</code></li><li>把<code>01.00111</code>右移1位，前面补0，即<code>00.100111</code></li><li>y倒数第3位是0，只要加0，所以还是：<code>00.100111</code></li><li><code>00.100111</code>右移一位，即<code>00.0100111</code></li><li>y第一位是1，加上x的绝对值：<code>00.0100111 + 00.1101 = 01.0001111</code></li><li><code>01.0001111</code>右移一位，即<code>00.10001111</code><br>所以最后结果为<code>0.10001111</code>。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;em&gt;本文简述了计算机中的原码一位乘法。文中没有涉及到高深的数学知识。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;人们通过数字前的“−”符号来表示一个负数。而在计算机硬件中，数字都以无符号的二进制形式表示，因此需要一种编码负号的方法。在之前的&lt;em&gt;&lt;a href=&quot;/2018/binar
       
     
     </summary>
