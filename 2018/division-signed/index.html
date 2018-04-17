@@ -21,13 +21,13 @@ ga('create','UA-117553820-1','auto');ga('send','pageview');
 <h2 id="2-加减交替法"><a href="#2-加减交替法" class="headerlink" title="2. 加减交替法"></a>2. 加减交替法</h2><p>又称不恢复余数法，其特点是运算过程中如果不够减，则不必恢复余数，根据余数符号，可以继续往下运算，因此步数固定且控制简单。</p>
 <p>设<script type="math/tex">r_{i}</script>表示第i次运算后所得的余数，按照恢复余数法，有：</p>
 <ol>
-<li>若<script type="math/tex">r_{i}\textgreater 0</script>，则商填1，余数和商左移1位，再减去除数，即<script type="math/tex">r_{i+1}=2r_{i}-y</script>；</li>
-<li>若<script type="math/tex">r_{i}\textless 0</script>，先恢复余数，再商填0，余数和商左移1位，再减去除数，即<script type="math/tex">r_{i+1}=2(r_{i}+y)-y=2r_{i}+y</script>。</li>
+<li>若<script type="math/tex">r_{i}>0</script>，则商填1，余数和商左移1位，再减去除数，即<script type="math/tex">r_{i+1}=2r_{i}-y</script>；</li>
+<li>若<script type="math/tex">r_{i}<0</script>，先恢复余数，再商填0，余数和商左移1位，再减去除数，即<script type="math/tex">r_{i+1}=2(r_{i}+y)-y=2r_{i}+y</script>。</li>
 </ol>
 <p>由以上两点可以得出原码加减交替法的运算规则：</p>
 <ol>
-<li>若<script type="math/tex">r_{i}\textgreater 0</script>，则商填1，余数和商左移1位，再减去除数，即<script type="math/tex">r_{i+1}=2r_{i}-y</script>；</li>
-<li>若<script type="math/tex">r_{i}\textless 0</script>，则商填0，余数和商左移1位，再加上除数，即<script type="math/tex">r_{i+1}=2r_{i}+y</script>。</li>
+<li>若<script type="math/tex">r_{i}>0</script>，则商填1，余数和商左移1位，再减去除数，即<script type="math/tex">r_{i+1}=2r_{i}-y</script>；</li>
+<li>若<script type="math/tex">r_{i}<0</script>，则商填0，余数和商左移1位，再加上除数，即<script type="math/tex">r_{i+1}=2r_{i}+y</script>。</li>
 </ol>
 <p>当末位商1时，所得到的余数与恢复余数法相同，是正确的余数。但当末位商0时，为得到正确的余数，需增加一步恢复余数，在恢复余数后，商左移一位，最后一步余数不左移。</p>
 <p>举例说明，设 <script type="math/tex">x = 0.1001</script>，<script type="math/tex">y = -0.1011</script>，用加减交替法求求商，其过程如下：</p>
