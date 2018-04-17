@@ -30,7 +30,8 @@ ga('create','UA-117553820-1','auto');ga('send','pageview');
 <li>若<script type="math/tex">r_{i}<0</script>，则商填0，余数和商左移1位，再加上除数，即<script type="math/tex">r_{i+1}=2r_{i}+y</script>。</li>
 </ol>
 <p>当末位商1时，所得到的余数与恢复余数法相同，是正确的余数。但当末位商0时，为得到正确的余数，需增加一步恢复余数，在恢复余数后，商左移一位，最后一步余数不左移。</p>
-<p>举例说明，设 <script type="math/tex">x = 0.1001</script>，<script type="math/tex">y = -0.1011</script>，用加减交替法求求商，其过程如下：</p>
+<p>举例说明，设 <script type="math/tex">x = 0.1001</script>，<script type="math/tex">y = -0.1011</script>，用加减交替法求求商，其过程如下：<br>有<script type="math/tex">[x]_{原}=0.1001</script>，<script type="math/tex">[y]_{原}=1.1011</script><br>商的符号位 <script type="math/tex">x_{s}\oplus y_{s}=0\oplus 1=1</script><br>有<script type="math/tex">|x|_{补}=0.1001、|y|_{补}=0.1011、[|y|]_{变补}=1.0101</script><br><img src="http://resource.dynamicfire.cn/blog/division-signed-2.png" alt=""><br>商左移1位，最后一步余数不左移</p>
+<p><script type="math/tex">\therefore [x\div y]_{原} = 1.1101，[余数]_{原}=0.00000001</script>, 余数符号位和被除数一样。<br>即<script type="math/tex">x\div y=-0.1101, 余数=0.0000001</script>。</p>
 </div><iframe src="/donate/?AliPayQR=/AliPayQR.png&amp;WeChatQR=/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><div class="tags"><a href="/tags/计算机原理/">计算机原理</a><a href="/tags/二进制/">二进制</a></div><div class="post-nav"><a class="next" href="/2018/markdown/">Markdown语法速查手册</a></div><div id="container"></div><link rel="stylesheet" type="text/css" href="//unpkg.com/gitalk/dist/gitalk.css?v=0.0.0"><script type="text/javascript" src="//unpkg.com/gitalk/dist/gitalk.min.js?v=0.0.0"></script><script>var gitalk = new Gitalk({
   clientID: 'fe2b52377a09d7bec471',
   clientSecret: '9b7050da9526fe6d808b06befe55f1e1e48c5075',
