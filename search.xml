@@ -3,6 +3,48 @@
   
     
     <entry>
+      <title>记在2020</title>
+      <link href="/2020/2020/"/>
+      <url>/2020/2020/</url>
+      <content type="html"><![CDATA[<p>最近正复习到了408里面的机组部分，隐隐约约记得自己曾经写过一点相关文章，在折腾了几个小时后终于恢复了数据—就是你现在看到的这个并没有什么东西的博客。看到两年前（2018年）自己刚开始时一天两更到最后三分钟热度九天放弃不禁有些汗颜。</p><p>今年年初疫情下找工作、写毕业论文，我自己倒没感觉到遇到了什么特别大的问题，一切都挺顺利：三月初找到了Android开发的工作，论文也基本完成，就等着7月开始新的阶段。三月的我应该是想不到到最后会辞了工作准备考研吧？</p><p>腹中虽有千言却无处下笔，上面的这些东西姑且当作今天的胡言乱语。</p><blockquote><p>欲买桂花同载酒，终不似、少年游。</p></blockquote><p>ps：前面有几篇文章的图片挂了，我看看之后能不能补。</p>]]></content>
+      
+      <categories>
+          
+          <category> 随便写写 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 杂 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>线性代数核心 (deprecated)</title>
+      <link href="/2018/core-linear/"/>
+      <url>/2018/core-linear/</url>
+      <content type="html"><![CDATA[<p>本文已弃坑 2020/9/8</p><blockquote><p>线性代数是关于向量空间和线性映射的一个数学分支。它包括对线、面和子空间的研究，同时也涉及到所有的向量空间的一般性质。<br>……<br>线性代数的方法还用在解析几何、工程、物理、自然科学、计算机科学、计算机动画和社会科学（尤其是经济学）中。由于线性代数是一套完善的理论，非线性数学模型通常可以被近似为线性模型。</p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> 数学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性代数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>原码一位除法</title>
       <link href="/2018/division-signed/"/>
       <url>/2018/division-signed/</url>

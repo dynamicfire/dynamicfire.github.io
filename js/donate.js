@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
 	var MainBox = $('#MainBox');
 	var count = 0;
 	$("li").hide();
-	if($.getUrlParam('BTCQR') && $.getUrlParam('BTCKEY')) {
+	if($.getUrlParam('BTCQR')) {
 		var BTCQR = $.getUrlParam('BTCQR'); // 二维码路径
 		var BTCKEY = $.getUrlParam('BTCKEY');
 		count++;
